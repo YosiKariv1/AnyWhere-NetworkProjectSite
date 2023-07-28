@@ -6,7 +6,7 @@ AnyWhere is a web-based application that simulates the operations of a travel ag
 
 ## Project Preview
 
-![Project Preview](Image-URL) <!-- Replace "Image-URL" with the actual URL of your image -->
+![ללא שם](https://github.com/YosiKariv1/AquariumSimulator/assets/93153387/28639b1e-38f3-44ce-aa94-033f31c23b75)
 
 ## Installation/Setup Instructions
 
@@ -31,10 +31,11 @@ CREATE TABLE [dbo].[UsersDB] (
     CONSTRAINT [PK_dbo.UsersDB] PRIMARY KEY CLUSTERED ([Email] ASC)
 );
 ```
--- Add the admin user:
+Add the admin user:
 
 ```sql
 INSERT INTO [dbo].[UsersDB] ([Email], [Id], [FirstName], [LastName], [Password]) VALUES (N'Admin@AnyWhere.com', 1, N'Admin', N'Admin', N'/admin')
+```
 
 ### Flights
 Create the FlightsDB table:
@@ -55,3 +56,48 @@ CREATE TABLE [dbo].[FlightsDB] (
     [TicketPrice] DECIMAL (18)  NULL, 
     CONSTRAINT [PK_FlightsDB] PRIMARY KEY ([f_Id])
 );
+```
+
+### Bookings
+Create the BooksDB table:
+```sql
+CREATE TABLE [dbo].[BooksDB] (
+    [Id] INT IDENTITY(1,1) PRIMARY KEY,
+    [User_id] INT NOT NULL,
+    [Flight_id] INT NOT NULL,
+    [FirstName] NVARCHAR(50) NOT NULL,
+    [LastName] NVARCHAR(50) NOT NULL,
+    [Email] NVARCHAR(255) NOT NULL,
+    [Company] NVARCHAR(50) NULL,
+    [From] NVARCHAR(50) NOT NULL,
+    [To] NVARCHAR(50) NOT NULL,
+    [Depart] NVARCHAR(50) NOT NULL,
+    [Time_Depart] NVARCHAR(50) NOT NULL,
+    [Return] NVARCHAR(50) NOT NULL,
+    [Time_Return] NVARCHAR(50) NOT NULL,
+    [Stops] INT NOT NULL,
+    [isLowCost] BIT NOT NULL,
+    [CardNumber] NVARCHAR(50) NOT NULL,
+    [ExpirationDate] NVARCHAR(50) NOT NULL,
+    [SecurityCode] NVARCHAR(50) NOT NULL,
+    [WantToStore] BIT NOT NULL,
+    [NumberOfTickets] INT NOT NULL,
+    [TotalPrice] DECIMAL(10,2) NOT NULL
+);
+```
+
+### Project Structure
+- Models: Users, Flights, Booking
+- Controllers: HomeController, FlightsController, BookingController, AdminController
+
+### Technologies Used
+- C#
+- MVC
+- Entity Framework
+- Bootstrap 5
+- jQuery 3.6.1
+- Microsoft SQL Server
+
+### Contact Information
+- LinkedIn - Yosi Kariv
+- Email - Yosi277@gmail.com
