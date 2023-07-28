@@ -31,7 +31,7 @@ CREATE TABLE [dbo].[UsersDB] (
     CONSTRAINT [PK_dbo.UsersDB] PRIMARY KEY CLUSTERED ([Email] ASC)
 );
 
-Add the admin user:
+-- Add the admin user:
 
 ```sql
 INSERT INTO [dbo].[UsersDB] ([Email], [Id], [FirstName], [LastName], [Password]) VALUES (N'Admin@AnyWhere.com', 1, N'Admin', N'Admin', N'/admin')
