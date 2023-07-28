@@ -1,0 +1,21 @@
+﻿@model  AnyWhere____Network_Project_Website.ViewModel.VM
+@using AnyWhere____Network_Project_Website.Models
+
+@{
+    ViewBag.Title = "DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+    <div class="d-flex" style="height: 85vh;">
+        <nav class="nav flex-column col-2 bg-light rounded-3">
+            <button class="btn btn-primary my-1 rounded-3" onclick="location.href='@Url.Action("UserTable", "Admin")'">Users</button>
+            <button class="btn btn-primary my-1 rounded-3" onclick="location.href='@Url.Action("FlightTable", "Admin")'">Flights</button>
+            <button class="btn btn-primary my-1 rounded-3" onclick="location.href='@Url.Action("BookTable", "Admin")'">Books</button>
+        </nav>
+        <main class="col-9">
+            @RenderBody()
+        </main>
+    </div>
+</div>
+

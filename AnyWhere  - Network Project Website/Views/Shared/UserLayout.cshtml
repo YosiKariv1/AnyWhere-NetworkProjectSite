@@ -1,0 +1,36 @@
+﻿@model AnyWhere____Network_Project_Website.ViewModel.VM
+
+@{
+    Layout = null;
+}
+
+@if (AnyWhere____Network_Project_Website.Controllers.UsersController.UserID != 0)
+{
+    <ul class="nav navbar-nav navbar-right">
+        @{
+                <label class="fs-5 fw-bold px-2 mx-3 text-primary"> Hello @AnyWhere____Network_Project_Website.Controllers.UsersController.UserName</label>
+
+            if (AnyWhere____Network_Project_Website.Controllers.UsersController.UserID == 1)
+            {
+                <li><button href="#" class="btn btn-primary mx-1" onclick="location.href='@Url.Action("Index", "Admin")'">DashBoard</button></li>
+            }
+            else
+            {
+                <li><button href="#" class="btn btn-primary mx-1" onclick="location.href='@Url.Action("MyProfile", "Users")'">MyProfile</button></li>
+            }
+        }
+        @using (Html.BeginForm("Logout", "Users", FormMethod.Post))
+        {
+            <li><button type="submit" href="#" class="btn btn-primary mx-2">Log off</button></li>
+        }
+    </ul>
+
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" class="nav-link text-primary fw-bold" data-bs-toggle="modal" data-bs-target="#ModalLogIn">Login</a></li>
+        <li><a href="#" class="nav-link text-primary fw-bold" data-bs-toggle="modal" data-bs-target="#ModalSignUp">Sign Up</a></li>
+    </ul>
+}
+

@@ -1,0 +1,78 @@
+﻿@model AnyWhere____Network_Project_Website.ViewModel.VM
+
+<div class="container border border-primary rounded-xl">
+    <div class="container-fluid">
+        <br />
+        <div class="card-body text-center text-xl bg-primary">
+            <div class="d-flex align-items-center mb-3 justify-content-center text-bg-light">
+                <i class="fas fa-plane-departure mr-2 text-secondary"></i>
+                <div>
+                    <div>@Model.flight.From</div>
+                    <div class="text-muted small">@Model.flight.Depart @Model.flight.Time_Depart</div>
+                </div>
+                <div class="mx-5">
+                    <i class="fas fa-arrow-right text-secondary"></i>
+                </div>
+                <i class="fas fa-plane-arrival mr-2 text-secondary"></i>
+                <div>
+                    <div>@Model.flight.To</div>
+                    <div class="text-muted small">@Model.flight.Return @Model.flight.Time_Return</div>
+                </div>
+
+            </div>
+        </div>
+
+        @using (Html.BeginForm("Purchase", "Booking", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-md-2 mb-3">
+                    <label for="validationDefault01">First name</label>
+                    @Html.EditorFor(m => m.book.FirstName, new { htmlAttributes = new { @class = "form-control", @Value = Model.user.FirstName, required = "" } })
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="validationDefault02">Last name</label>
+                    @Html.EditorFor(m => m.book.LastName, new { htmlAttributes = new { @class = "form-control", @Value = Model.user.LastName, required = "" } })
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="validationDefaultUsername">Email</label>
+                    <div class="input-group">
+                        @Html.EditorFor(m => m.book.Email, new { htmlAttributes = new { @class = "form-control", @Value = Model.user.Email, required = "" } })
+                    </div>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="validationDefaultUsername">Number Of Ticket</label>
+                    <div class="input-group">
+                        @Html.EditorFor(m => m.book.NumberOfTickets, new { htmlAttributes = new { @class = "form-control", @type = "number", @min = "0", @step = "1", @max = Model.flight.Sits, @value = "0", required = "" } })
+                    </div>
+                </div>
+            </div>
+            <div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="validationDefault03">Card Number:</label>
+                    @Html.EditorFor(m => m.book.CardNumber, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="validationDefault04">Expiration Date:</label>
+                    @Html.EditorFor(m => m.book.ExpirationDate, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="validationDefault05">Security Code:</label>
+                    @Html.EditorFor(m => m.book.SecurityCode, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                </div>
+            </div>
+            <div class="form-group col-md-3 mb-3">
+                <div class="form-check">
+                    @Html.CheckBoxFor(m => m.book.WantToStore, new { htmlAttributes = new { @class = "form-check-input", required = "" } })
+                    <label class="form-check-label" for="paymentMethod2">Want To Store The Details?</label>
+                </div>
+            </div>
+            <div class="d-grid mt-5 col-4 mx-auto">
+                <input id="Submit" type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        }
+        <br />
+    </div>
+</div>

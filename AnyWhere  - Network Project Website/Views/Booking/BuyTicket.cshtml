@@ -1,0 +1,14 @@
+﻿@model AnyWhere____Network_Project_Website.ViewModel.VM
+@{
+    ViewBag.Title = "BuyTicket";
+
+    if (Model.user != null)
+    {
+        @Html.Partial("WithUser", Model)
+    }
+    else
+    {
+        @Html.Partial("WithoutUser", Model)
+    }
+}
+

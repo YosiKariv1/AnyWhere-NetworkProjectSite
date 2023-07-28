@@ -1,0 +1,53 @@
+﻿@model AnyWhere____Network_Project_Website.ViewModel.VM
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<br />
+<br />
+<!--Header-->
+<div class="container text-primary">
+    <h1 class="fw-bold" style="font-size:3.55rem; margin-bottom:1rem; margin-top:11rem; margin-right: 10px;">Let the journey begin</h1>
+</div>
+<!--Middel Bar-->
+<div class="container p-5 my-3 bg-light text-dark rounded-3 opacity-75 shadow">
+    <div>
+        @using (Html.BeginForm("Index", "Flights", FormMethod.Post))
+        {
+            <!--First Row-->
+            <div class="row">
+                <!--Cols From/To-->
+                <div class="col-sm">
+                    <label class="md-2 text-primary">From</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi-pin-map"></i> </span>
+                        @Html.EditorFor(m => m.flight.From, new { htmlAttributes = new { @class = "form-control", @placeholder = "Location", required = "" } })
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <label class="md-2 text-primary">To</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi-pin-map-fill"></i> </span>
+                        @Html.EditorFor(m => m.flight.To, new { htmlAttributes = new { @class = "form-control", @placeholder = "Location", required = "" } })
+                    </div>
+                </div>
+                <!--Cols Depart/Return-->
+                <div class="dates col-sm">
+                    <label class="md-1 text-primary">Depart</label>
+                    @Html.EditorFor(m => m.flight.Depart, new { htmlAttributes = new { @class = "form-control", @id = "startDate" , @type = "date" , required = ""} })
+                </div>
+                <div class="dates col-sm">
+                    <label class="md-1 text-primary">Return</label>
+                    @Html.EditorFor(m => m.flight.Return, new { htmlAttributes = new { @class = "form-control", @id = "startDate", @type = "date", required = "" } })
+                </div>
+            </div>
+            <!--Second Row-->
+            <div class="row">
+                <!--Submit Button-->
+                <div class="d-grid mt-5 col-4 mx-auto">
+                    <input id="Submit" type="submit" value="Submit" class="btn btn-primary"/>
+                </div>
+            </div>
+         }
+    </div>
+</div>

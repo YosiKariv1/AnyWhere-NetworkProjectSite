@@ -1,0 +1,71 @@
+﻿@model AnyWhere____Network_Project_Website.ViewModel.VM
+@{
+    Layout = null;
+}
+
+<!-- Modal Login -->
+<div class="modal fade" id="ModalLogIn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary fs-2" id="exampleModalLabel">Log in</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("LoginSubmit", "Users", FormMethod.Post))
+            {
+                @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <label for="Input1" class="md-1">Email</label>
+                    @Html.EditorFor(m => m.user.Email, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                    @Html.ValidationMessageFor(x => x.user.Email)
+                    <br />
+                    <label for="Input2" class="md-1">Password</label>
+                    @Html.EditorFor(m => m.user.Password, new { htmlAttributes = new { @class = "form-control", @type = "password", required = "" } })
+                    @Html.ValidationMessageFor(x => x.user.Password)
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="Submit" type="submit" class="btn btn-primary">Login</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<!-- Modal SignUp -->
+<div class="modal fade" id="ModalSignUp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-primary fs-2" id="exampleModalLabel">Sign Up</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("Register", "Users", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <label for="Input1" class="md-1">First Name</label>
+                    @Html.EditorFor(m => m.user.FirstName, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                    @Html.ValidationMessageFor(x => x.user.FirstName)
+
+                    <label for="Input1" class="md-1">Last Name</label>
+                    @Html.EditorFor(m => m.user.LastName, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                    @Html.ValidationMessageFor(x => x.user.LastName)
+
+                    <label for="Input1" class="md-1">Email</label>
+                    @Html.EditorFor(m => m.user.Email, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                    @Html.ValidationMessageFor(x => x.user.Email)
+
+                    <label for="Input2" class="md-1">Password</label>
+                    @Html.EditorFor(m => m.user.Password, new { htmlAttributes = new { @class = "form-control", required = "" } })
+                    @Html.ValidationMessageFor(x => x.user.Password)
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="Submit" type="submit" class="btn btn-primary">Sign In</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

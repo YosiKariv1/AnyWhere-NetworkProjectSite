@@ -1,0 +1,88 @@
+﻿@model AnyWhere____Network_Project_Website.ViewModel.VM
+@using AnyWhere____Network_Project_Website.Models
+@{
+    ViewBag.Title = "MyProfile";
+}
+
+<div class="container-fluid" id="main">
+    <div class="row row-offcanvas row-offcanvas-left">
+        <div class="col-md-3 col-lg-2  bg-light pl-0" id="sidebar" role="navigation" style="min-height: 82vh;">
+            <div class="user-profile-box">
+                <div class="header clearfix d-flex flex-column align-items-center">
+                    <h2>@AnyWhere____Network_Project_Website.Controllers.UsersController.UserName</h2>
+                    <img id="g-profile-img" class="img-fuid mb-3" width="80" height="80" alt="avatar" src="https://profiles.stanford.edu/proxy/api/cap/profiles/65672/resources/profilephoto/350x350.1509500008416.jpg">
+                </div>
+                <div class="detail clearfix">
+                    <ul class="list-group list-group-flush">
+                        <a href="" class="list-group-item list-group-item-action mt-3 bg-primary rounded-2 ">
+                            Booking
+                        </a>
+                    </ul>
+                </div><!-- Détail-->
+            </div>
+        </div>
+        <!--/col-->
+        <div class="col main pt-5 mt-3">
+            <!--/row-->
+            <p class="lead mt-5">
+                <h2> Booking Flights</h2>
+            </p>
+            @{
+
+                    <div class="d-flex flex-column bd-highlight mb-3">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead class="thead-inverse">
+                                    <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                        <th>Company</th>
+                                        <th>From</th>
+                                        <th>To</th>
+                                        <th>Depart</th>
+                                        <th>Time Depart</th>
+                                        <th>Return</th>
+                                        <th>Time Return</th>
+                                        <th>Number Of Tickets</th>
+                                        <th>TotalPrice</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model.books.Count() != 0)
+                                    {
+                                        foreach (Booking book in Model.books)
+                                        {
+                                            <tr>
+                                                <td>@book.FirstName</td>
+                                                <td>@book.LastName</td>
+                                                <td>@book.Email</td>
+                                                <td>@book.Company</td>
+                                                <td>@book.From</td>
+                                                <td>@book.To</td>
+                                                <td>@book.Depart</td>
+                                                <td>@book.Time_Depart</td>
+                                                <td>@book.Return</td>
+                                                <td>@book.Time_Return</td>
+                                                <td>@book.NumberOfTickets</td>
+                                                <td>@book.TotalPrice</td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                        <div class="alert alert-primary" role="alert">
+                                            No Flights Are Found! Try Buying Ticket First..
+                                        </div>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            }
+        </div>
+        <!--/row-->
+    </div>
+</div>

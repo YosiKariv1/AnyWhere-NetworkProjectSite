@@ -1,0 +1,127 @@
+﻿@model AnyWhere____Network_Project_Website.ViewModel.VM
+@using AnyWhere____Network_Project_Website.Models
+@{
+    ViewBag.Title = "SearchResult";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--Page-->
+<div class="container-fluid">
+    <div class="row">
+        <!--Left Page-->
+        <div class="col-md-3">
+            <!--Put Here Something!-->
+        </div>
+        <!--Middle Page-->
+        <div class="col-md-6">
+            <div class="btn-group btn-group-lg col-md-12 shadow" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" onclick="location.href='@Url.Action("FlightsFillters", "Flights", new { butn = "Price Decrease" })'">
+                <label class="btn btn-outline-primary" for="btnradio1">Price Decrease</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" onclick="location.href='@Url.Action("FlightsFillters", "Flights", new { butn = "Price Increase" })'">
+                <label class="btn btn-outline-primary" for="btnradio2">Price Increase</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" onclick="location.href='@Url.Action("FlightsFillters", "Flights", new { butn = "popular Flight" })'">
+                <label class="btn btn-outline-primary" for="btnradio3">Popular</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" onclick="location.href='@Url.Action("FlightsCuontry", "Flights", new { butn = "Country Flight" })'">
+                <label class="btn btn-outline-primary" for="btnradio3">Country</label>
+            </div>
+
+            <div>
+                <br />
+                @RenderBody()
+            </div>
+
+            <!--Pages-->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end mt-4">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!--Right Page-->
+        <div class="col-md-3">
+            <!--Search Flights Area-->
+            <div class="alert alert-primary rounded-0 " role="alert">
+                @using (Html.BeginForm("Index", "Flights", FormMethod.Post))
+                {
+                    <!--First Row-->
+                    <div class="row ">
+                        <div class="col-sm">
+                            <label class="md-1 text-primary ">From</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi-pin-map"></i> </span>
+                                @Html.EditorFor(m => m.flight.From, new { htmlAttributes = new { @class = "form-control", @placeholder = "Location", required = "" } })
+                            </div>
+                        </div>
+                        <div class="col-sm">
+                            <label class="md-1 text-primary">To</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi-pin-map-fill"></i> </span>
+                                @Html.EditorFor(m => m.flight.To, new { htmlAttributes = new { @class = "form-control", @placeholder = "Location", required = "" } })
+                            </div>
+                        </div>
+                    </div>
+                    <!--Secoend Row-->
+                    <div class="row">
+                        <div class="col-sm">
+                            <label class="md-1 text-primary">Depart</label>
+                            @Html.EditorFor(m => m.flight.Depart, new { htmlAttributes = new { @class = "form-control", @id = "startDate", @type = "date" } })
+                        </div>
+                        <div class="col-sm">
+                            <label class="md-1 text-primary">Return</label>
+                            @Html.EditorFor(m => m.flight.Return, new { htmlAttributes = new { @class = "form-control", @id = "startDate", @type = "date" } })
+                        </div>
+                    </div>
+                    <!--Thired Row-->
+                    <div class="row">
+                        <!--Submit Button-->
+                        <div class="d-grid mt-5 col-4 mx-auto">
+                            <input id="Submit" type="submit" value="Submit" class="btn btn-primary" />
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <!--Filter Area-->
+            <div class="card mt-3">
+                <div class="jumbotron px-2 my-3 align-items-center text-center mx-auto">
+                    <!--Filter Bottons!!!-->
+                    <button class="btn btn-primary my-1 rounded-3" onclick="location.href='@Url.Action("FlightsFillters", "Flights", new { butn = "DirectFlight"})'">One Stop</button>
+                    <button class="btn btn-primary my-1 rounded-3" onclick="location.href='@Url.Action("FlightsFillters", "Flights", new { butn = "NoDirectFlight"})'">Two Stop</button>
+                    <hr />
+                    <form method="post" action="/Flights/PriceBetween">
+                        <label for="formControlRange">Price Range</label>
+                        <input type="range"
+                               class="form-control-range"
+                               id="formControlRange"
+                               min="0"
+                               max="1000"
+                               step="100"
+                               oninput="updateValue()" />
+                        <span id="rangeval">500</span>
+                        <input type="hidden" name="price" id="price" value="">
+                        <input class="btn btn-primary my-1 rounded-3" type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateValue() {
+        var range = document.getElementById("formControlRange");
+        var value = document.getElementById("rangeval");
+        value.innerHTML = range.value;
+        document.getElementById("price").value = range.value;
+    }
+</script>
+

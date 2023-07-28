@@ -1,0 +1,49 @@
+﻿@model AnyWhere____Network_Project_Website.ViewModel.VM
+@using AnyWhere____Network_Project_Website.Models
+@{
+    ViewBag.Title = "FlightTable";
+    Layout = "~/Views/Admin/DashBoard.cshtml";
+}
+
+<div class="tab-content">
+    <div class="tab-pane container active p-0" id="home">
+        <h5 class="text-uppercase p-2 text-center">List of Flighs</h5>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-dark text-black">
+                <tr>
+                    <th>f_Id</th>
+                    <th>Company</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Depart</th>
+                    <th>Time Depart</th>
+                    <th>Return</th>
+                    <th>Time_Return</th>
+                    <th>Stops</th>
+                    <th>isLowCost</th>
+                    <th>Sits</th>
+                    <th>TicketPrice</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Flights fl in Model.flights)
+                {
+                    <tr>
+                        <td>@fl.f_Id</td>
+                        <td>@fl.Company</td>
+                        <td>@fl.From</td>
+                        <td>@fl.To</td>
+                        <td>@fl.Depart</td>
+                        <td>@fl.Time_Depart</td>
+                        <td>@fl.Return</td>
+                        <td>@fl.Time_Return</td>
+                        <td>@fl.Stops</td>
+                        <td>@fl.isLowCost</td>
+                        <td>@fl.Sits</td>
+                        <td>@fl.TicketPrice</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
