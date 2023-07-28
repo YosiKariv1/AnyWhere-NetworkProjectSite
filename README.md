@@ -6,7 +6,7 @@ AnyWhere is a web-based application that simulates the operations of a travel ag
 
 ## Project Preview
 
-![ללא שם](https://github.com/YosiKariv1/AquariumSimulator/assets/93153387/28639b1e-38f3-44ce-aa94-033f31c23b75)
+![תמונה של WhatsApp‏ 2023-07-28 בשעה 22 50 34](https://github.com/YosiKariv1/AquariumSimulator/assets/93153387/e6175c16-7161-424e-abc0-ed0148475dd1)
 
 ## Installation/Setup Instructions
 
