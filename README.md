@@ -30,3 +30,26 @@ CREATE TABLE [dbo].[UsersDB] (
     [Password]  NVARCHAR (10) NOT NULL,
     CONSTRAINT [PK_dbo.UsersDB] PRIMARY KEY CLUSTERED ([Email] ASC)
 );
+
+Add the admin user:
+```sql
+INSERT INTO [dbo].[UsersDB] ([Email], [Id], [FirstName], [LastName], [Password]) VALUES (N'Admin@AnyWhere.com', 1, N'Admin', N'Admin', N'/admin')
+
+### Flights
+Create the FlightsDB table:
+```sql
+CREATE TABLE [dbo].[FlightsDB] (
+    [f_Id]        INT           NOT NULL,
+    [Company]     VARCHAR (255) NULL,
+    [From]        VARCHAR (255) NULL,
+    [To]          VARCHAR (255) NULL,
+    [Depart]      VARCHAR (255) NULL,
+    [Time_Depart] VARCHAR(50)   NULL,
+    [Return]      VARCHAR (255) NULL,
+    [Time_Return] VARCHAR (255) NULL,
+    [Stops]       INT           NULL,
+    [isLowCost]   BIT           NULL,
+    [Sits]        INT           NULL,
+    [TicketPrice] DECIMAL (18)  NULL, 
+    CONSTRAINT [PK_FlightsDB] PRIMARY KEY ([f_Id])
+);
