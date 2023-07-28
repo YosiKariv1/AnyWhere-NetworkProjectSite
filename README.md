@@ -30,7 +30,7 @@ CREATE TABLE [dbo].[UsersDB] (
     [Password]  NVARCHAR (10) NOT NULL,
     CONSTRAINT [PK_dbo.UsersDB] PRIMARY KEY CLUSTERED ([Email] ASC)
 );
-
+```
 -- Add the admin user:
 
 ```sql
