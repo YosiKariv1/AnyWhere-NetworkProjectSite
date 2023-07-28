@@ -10,7 +10,7 @@ AnyWhere is a web-based application that simulates the operations of a travel ag
 
 ## Installation/Setup Instructions
 
-1. Download the project files from [this link](https://drive.google.com/drive/folders/1kNfYUXQvYOAkUFTHVw8bJGqTVReb3ZOy?usp=sharing).
+1. Download the project files git.
 2. Set up the Microsoft SQL Server and create the required tables (see 'Database Setup' below).
 3. Open the solution in Visual Studio or any compatible IDE.
 4. Run the application.
