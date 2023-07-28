@@ -32,11 +32,13 @@ CREATE TABLE [dbo].[UsersDB] (
 );
 
 Add the admin user:
+
 ```sql
 INSERT INTO [dbo].[UsersDB] ([Email], [Id], [FirstName], [LastName], [Password]) VALUES (N'Admin@AnyWhere.com', 1, N'Admin', N'Admin', N'/admin')
 
 ### Flights
 Create the FlightsDB table:
+
 ```sql
 CREATE TABLE [dbo].[FlightsDB] (
     [f_Id]        INT           NOT NULL,
